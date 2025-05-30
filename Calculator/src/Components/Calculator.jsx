@@ -21,7 +21,7 @@ const Calculator = () => {
       <button onClick={getValue} value='('>(</button>
       <button onClick={getValue} value=')'>)</button>
       <button onClick={getValue} value='%'>%</button>
-      <button valu='AC'>AC</button>
+      <button onClick={getValue} value='AC'>AC</button>
 
       <button onClick={getValue} value='7'>7</button>
       <button onClick={getValue} value='8'>8</button>
