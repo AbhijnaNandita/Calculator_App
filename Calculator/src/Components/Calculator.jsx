@@ -9,7 +9,22 @@ const Calculator = () => {
   }
 
   const calculation = () => {
-    setData(eval(data));
+  try {
+    // Remove leading zeros from numbers to avoid octal issues
+    const sanitizedData = data.replace(/\b0+(\d)/g, '$1');
+    setData(eval(sanitizedData).toString());
+  } catch (e) {
+    setData("Error");
+  }
+}
+
+
+  const back=()=>{
+    setData(data.slice(0,-1))
+  }
+
+  const clear=()=>{
+    setData("")
   }
 
   return (
@@ -21,7 +36,7 @@ const Calculator = () => {
       <button onClick={getValue} value='('>(</button>
       <button onClick={getValue} value=')'>)</button>
       <button onClick={getValue} value='%'>%</button>
-      <button onClick={getValue} value='AC'>AC</button>
+      <button onClick={clear} >AC</button>
 
       <button onClick={getValue} value='7'>7</button>
       <button onClick={getValue} value='8'>8</button>
@@ -39,7 +54,7 @@ const Calculator = () => {
       <button onClick={getValue} value='+'>+</button>
 
       <button onClick={getValue} value='0'>0</button>
-      <button onClick={getValue} value='BACK'>BACK</button>
+      <button onClick={back}>BACK</button>
       <button onClick={calculation} value='='>=</button>
       <button onClick={getValue} value='/'>/</button>
 
